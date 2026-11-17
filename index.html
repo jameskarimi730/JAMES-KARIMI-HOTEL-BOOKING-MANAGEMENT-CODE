@@ -4,90 +4,120 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nexora Grand Hotel | Management System</title>
+    <title>Nexora Grand Hotel | Book Your Stay</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header>
-        <h1>NEXORA GRAND HOTEL</h1>
-        <p>Hotel Booking Management System</p>
-    </header>
+<header class="site-header">
+    <div class="logo">
+        <h2>NEXORA <span>GRAND HOTEL</span></h2>
+    </div>
 
     <nav>
-        <button onclick="showSection('dashboard')">Dashboard</button>
-        <button onclick="showSection('rooms')">Rooms</button>
-        <button onclick="showSection('bookings')">Bookings</button>
-        <button onclick="showSection('payments')">Payments</button>
+        <a href="index.html">Home</a>
+        <a href="rooms.html">Our Rooms</a>
+        <a href="#facilities">Facilities</a>
+        <a href="#contact">Contact</a>
+        <a href="booking.html" class="nav-book">Book Now</a>
     </nav>
+</header>
 
-    <main>
-        <section id="dashboard" class="section">
-            <h2>Dashboard Overview</h2>
-            <div class="stats">
-                <div class="stat-card">
-                    <h3>Total Rooms</h3>
-                    <p id="totalRooms">10</p>
-                </div>
-                <div class="stat-card">
-                    <h3>Active Bookings</h3>
-                    <p id="totalBookings">0</p>
-                </div>
-                <div class="stat-card">
-                    <h3>Available Rooms</h3>
-                    <p id="availableRooms">10</p>
-                </div>
-                <div class="stat-card">
-                    <h3>Payments Received</h3>
-                    <p id="totalPayments">KSh 0</p>
-                </div>
-            </div>
-        </section>
+<section class="hero">
+    <div class="hero-content">
+        <p class="eyebrow">WELCOME TO NEXORA GRAND HOTEL</p>
+        <h1>Experience Comfort.<br>Discover Luxury.</h1>
+        <p>
+            Enjoy exceptional hospitality, comfortable rooms
+            and memorable experiences at Nexora Grand Hotel.
+        </p>
+        <a href="rooms.html" class="primary-btn">Explore Our Rooms</a>
+    </div>
+</section>
 
-        <section id="rooms" class="section hidden">
-            <h2>Room Availability</h2>
-            <div id="roomList"></div>
-        </section>
+<section class="welcome">
+    <p class="eyebrow">YOUR COMFORT IS OUR PRIORITY</p>
+    <h2>Welcome to Nexora Grand Hotel</h2>
+    <p>
+        Whether you are travelling for business or leisure,
+        we offer comfortable accommodation and quality
+        hospitality to make your stay memorable.
+    </p>
+</section>
 
-        <section id="bookings" class="section hidden">
-            <h2>Register Guest Booking</h2>
+<section class="rooms-preview">
+    <p class="eyebrow">ACCOMMODATION</p>
+    <h2>Discover Our Rooms</h2>
 
-            <form id="bookingForm">
-                <input id="guestName" placeholder="Guest Full Name" required>
-                <input id="phone" placeholder="Phone Number" required>
-                <input id="idNumber" placeholder="National ID / Passport" required>
+    <div class="room-grid">
+        <div class="public-room">
+            <div class="room-image single-image"></div>
+            <h3>Single Room</h3>
+            <p>Comfortable accommodation for individual guests.</p>
+            <p class="price">From KSh 1,500 / night</p>
+            <a href="booking.html" class="primary-btn">Book This Room</a>
+        </div>
 
-                <select id="roomNumber" required>
-                    <option value="">Select Room</option>
-                </select>
+        <div class="public-room">
+            <div class="room-image double-image"></div>
+            <h3>Double Room</h3>
+            <p>Spacious accommodation for a relaxing stay.</p>
+            <p class="price">From KSh 2,500 / night</p>
+            <a href="booking.html" class="primary-btn">Book This Room</a>
+        </div>
 
-                <input id="nights" type="number" min="1"
-                       placeholder="Number of Nights" required>
+        <div class="public-room">
+            <div class="room-image deluxe-image"></div>
+            <h3>Deluxe Room</h3>
+            <p>Extra comfort with an elegant atmosphere.</p>
+            <p class="price">From KSh 4,500 / night</p>
+            <a href="booking.html" class="primary-btn">Book This Room</a>
+        </div>
+    </div>
 
-                <button type="submit">Create Booking</button>
-            </form>
+    <a href="rooms.html" class="secondary-btn">View All Rooms</a>
+</section>
 
-            <h2>Booking Records</h2>
-            <input id="searchBooking" placeholder="Search guest or booking ID">
-            <div id="bookingList"></div>
-        </section>
+<section class="facilities" id="facilities">
+    <p class="eyebrow">OUR SERVICES</p>
+    <h2>Designed for Your Comfort</h2>
 
-        <section id="payments" class="section hidden">
-            <h2>Record Guest Payment</h2>
-            <form id="paymentForm">
-                <input id="paymentBookingId" type="number"
-                       placeholder="Booking ID" required>
-                <input id="paymentAmount" type="number" min="1"
-                       step="0.01" placeholder="Amount in KSh" required>
-                <button type="submit">Record Payment</button>
-            </form>
-        </section>
-    </main>
+    <div class="facility-grid">
+        <div class="facility">
+            <h3>Comfortable Rooms</h3>
+            <p>Relax in clean and comfortable accommodation.</p>
+        </div>
 
-    <footer>
-        <p>&copy; 2026 Nexora Grand Hotel. All Rights Reserved.</p>
-    </footer>
+        <div class="facility">
+            <h3>Free Wi-Fi</h3>
+            <p>Stay connected during your visit.</p>
+        </div>
 
-    <script src="script.js"></script>
+        <div class="facility">
+            <h3>Room Service</h3>
+            <p>Enjoy convenient hospitality services.</p>
+        </div>
+
+        <div class="facility">
+            <h3>Secure Parking</h3>
+            <p>Convenient parking for our guests.</p>
+        </div>
+    </div>
+</section>
+
+<section class="call-to-action">
+    <h2>Ready to Experience Nexora?</h2>
+    <p>Reserve your room today and enjoy a comfortable stay.</p>
+    <a href="rooms.html" class="primary-btn">Book Your Stay</a>
+</section>
+
+<footer id="contact">
+    <h2>NEXORA GRAND HOTEL</h2>
+    <p>Comfort, Hospitality and Excellence.</p>
+    <p>Contact: Add your hotel contact details here</p>
+    <p>&copy; 2026 Nexora Grand Hotel. All Rights Reserved.</p>
+    <a href="admin.html">Staff Login</a>
+</footer>
+
 </body>
 </html>

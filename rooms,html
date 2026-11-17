@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Rooms | Nexora Grand Hotel</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+    <h2>NEXORA GRAND HOTEL</h2>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="rooms.html">Rooms</a>
+        <a href="booking.html">Book Now</a>
+        <a href="index.html#facilities">Facilities</a>
+        <a href="index.html#contact">Contact</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="hero-content">
+        <p class="eyebrow">Comfort meets luxury</p>
+        <h1>Explore Our Rooms</h1>
+        <p>Choose a comfortable room for your next stay at Nexora Grand Hotel.</p>
+        <a href="booking.html" class="primary-btn">Make a Reservation</a>
+    </div>
+</section>
+
+<section class="rooms-preview">
+    <h2>Our Accommodation</h2>
+    <p>Choose from our carefully prepared rooms.</p>
+
+    <div class="room-grid">
+
+        <div class="public-room">
+            <div class="room-image"></div>
+            <h3>Single Room</h3>
+            <p>Comfortable accommodation for one guest.</p>
+            <p class="price">KSh 1,500 / night</p>
+            <a href="booking.html?room=Single" class="secondary-btn">Book This Room</a>
+        </div>
+
+        <div class="public-room">
+            <div class="room-image"></div>
+            <h3>Double Room</h3>
+            <p>Spacious accommodation suitable for two guests.</p>
+            <p class="price">KSh 2,500 / night</p>
+            <a href="booking.html?room=Double" class="secondary-btn">Book This Room</a>
+        </div>
+
+        <div class="public-room">
+            <div class="room-image"></div>
+            <h3>Deluxe Room</h3>
+            <p>Enjoy extra comfort and a relaxing experience.</p>
+            <p class="price">KSh 4,500 / night</p>
+            <a href="booking.html?room=Deluxe" class="secondary-btn">Book This Room</a>
+        </div>
+
+    </div>
+</section>
+
+<section class="call-to-action">
+    <h2>Ready to Stay With Us?</h2>
+    <p>Reserve your room today and enjoy your stay.</p>
+    <br>
+    <a href="booking.html" class="primary-btn">Book Your Room</a>
+</section>
+
+<footer>
+    <p>&copy; 2026 Nexora Grand Hotel. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>

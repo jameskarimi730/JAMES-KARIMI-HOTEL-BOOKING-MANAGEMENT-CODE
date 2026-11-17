@@ -1,0 +1,108 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login | Nexora Grand Hotel</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .login-container {
+            max-width: 420px;
+            margin: 80px auto;
+            padding: 35px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+        }
+
+        .login-container h1 {
+            text-align: center;
+            color: #101a2c;
+            margin-bottom: 10px;
+        }
+
+        .login-container p {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .login-container label {
+            display: block;
+            font-weight: bold;
+            margin: 15px 0 7px;
+        }
+
+        .login-container input {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #ccd3df;
+            border-radius: 6px;
+            font-size: 15px;
+        }
+
+        .login-container button {
+            width: 100%;
+            margin-top: 25px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .login-message {
+            margin-top: 15px;
+            text-align: center;
+            color: #b42318;
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <h2>NEXORA GRAND HOTEL</h2>
+    <nav>
+        <a href="index.html">Guest Website</a>
+        <a href="rooms.html">Rooms</a>
+    </nav>
+</header>
+
+<div class="login-container">
+
+    <h1>Admin Login</h1>
+    <p>Hotel management portal</p>
+
+    <form id="loginForm">
+
+        <label for="username">Username</label>
+        <input type="text" id="username" required placeholder="Enter username">
+
+        <label for="password">Password</label>
+        <input type="password" id="password" required placeholder="Enter password">
+
+        <button type="submit" class="primary-btn">
+            Login
+        </button>
+
+        <div class="login-message" id="message"></div>
+
+    </form>
+
+</div>
+
+<footer>
+    <p>&copy; 2026 Nexora Grand Hotel. All Rights Reserved.</p>
+</footer>
+
+<script>
+    document.getElementById("loginForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        document.getElementById("message").textContent =
+            "Admin authentication has not been configured yet. Please connect a secure login service.";
+    });
+</script>
+
+</body>
+</html>

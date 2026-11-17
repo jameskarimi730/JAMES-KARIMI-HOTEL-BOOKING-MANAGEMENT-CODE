@@ -1,0 +1,223 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a Room | Nexora Grand Hotel</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .booking-section {
+            max-width: 750px;
+            margin: 50px auto;
+            padding: 35px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+        }
+
+        .booking-section h1 {
+            text-align: center;
+            color: #101a2c;
+            margin-bottom: 10px;
+        }
+
+        .booking-section > p {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .booking-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            font-weight: bold;
+            margin-bottom: 7px;
+        }
+
+        .form-group input,
+        .form-group select {
+            padding: 13px;
+            border: 1px solid #ccd3df;
+            border-radius: 6px;
+            font-size: 15px;
+            width: 100%;
+        }
+
+        .booking-form button {
+            grid-column: 1 / -1;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .booking-note {
+            background: #e8f8f6;
+            padding: 14px;
+            border-radius: 6px;
+            color: #087f76;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        @media(max-width: 600px) {
+            .booking-section {
+                margin: 25px 15px;
+                padding: 22px;
+            }
+
+            .booking-form {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group.full,
+            .booking-form button {
+                grid-column: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <h2>NEXORA GRAND HOTEL</h2>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="rooms.html">Rooms</a>
+        <a href="booking.html">Book Now</a>
+    </nav>
+</header>
+
+<section class="booking-section">
+
+    <h1>Reserve Your Room</h1>
+    <p>Fill in your details to request a reservation.</p>
+
+    <form class="booking-form" id="bookingForm">
+
+        <div class="form-group full">
+            <label for="guestName">Full Name</label>
+            <input type="text" id="guestName" required placeholder="Enter your full name">
+        </div>
+
+        <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" required placeholder="07XXXXXXXX">
+        </div>
+
+        <div class="form-group">
+            <label for="guests">Number of Guests</label>
+            <input type="number" id="guests" min="1" max="10" value="1" required>
+        </div>
+
+        <div class="form-group">
+            <label for="room">Select Room</label>
+            <select id="room" required>
+                <option value="">Choose a room</option>
+                <option value="Single">Single Room - KSh 1,500</option>
+                <option value="Double">Double Room - KSh 2,500</option>
+                <option value="Deluxe">Deluxe Room - KSh 4,500</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="checkin">Check-in Date</label>
+            <input type="date" id="checkin" required>
+        </div>
+
+        <div class="form-group">
+            <label for="checkout">Check-out Date</label>
+            <input type="date" id="checkout" required>
+        </div>
+
+        <button type="submit" class="primary-btn">
+            Submit Booking Request
+        </button>
+
+    </form>
+
+    <div class="booking-note">
+        Your request will be prepared for submission. The hotel must confirm
+        room availability before your reservation is final.
+    </div>
+
+</section>
+
+<footer>
+    <p>&copy; 2026 Nexora Grand Hotel. All Rights Reserved.</p>
+</footer>
+
+<script>
+    const roomFromURL = new URLSearchParams(window.location.search).get("room");
+
+    if (roomFromURL) {
+        document.getElementById("room").value = roomFromURL;
+    }
+
+    const today = new Date().toISOString().split("T")[0];
+
+    document.getElementById("checkin").min = today;
+    document.getElementById("checkout").min = today;
+
+    document.getElementById("checkin").addEventListener("change", function () {
+        document.getElementById("checkout").min = this.value;
+
+        if (document.getElementById("checkout").value <= this.value) {
+            document.getElementById("checkout").value = "";
+        }
+    });
+
+    document.getElementById("bookingForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        const name = document.getElementById("guestName").value;
+        const phone = document.getElementById("phone").value;
+        const guests = document.getElementById("guests").value;
+        const room = document.getElementById("room").value;
+        const checkin = document.getElementById("checkin").value;
+        const checkout = document.getElementById("checkout").value;
+
+        if (new Date(checkout) <= new Date(checkin)) {
+            alert("Check-out date must be after check-in date.");
+            return;
+        }
+
+        const booking = {
+            name,
+            phone,
+            guests,
+            room,
+            checkin,
+            checkout,
+            bookingDate: new Date().toISOString(),
+            status: "Pending"
+        };
+
+        let bookings = JSON.parse(localStorage.getItem("hotelBookings")) || [];
+
+        bookings.push(booking);
+
+        localStorage.setItem("hotelBookings", JSON.stringify(bookings));
+
+        alert("Your booking request has been saved on this device. Please contact the hotel to confirm your reservation.");
+
+        this.reset();
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,223 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Nexora Grand Hotel</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .dashboard {
+            padding: 35px 7%;
+        }
+
+        .dashboard-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .dashboard-heading h1 {
+            color: #101a2c;
+        }
+
+        .logout-btn {
+            background: #101a2c;
+            color: white;
+            padding: 11px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+            gap: 20px;
+            margin-bottom: 35px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+        }
+
+        .stat-card h3 {
+            color: #526176;
+            font-size: 15px;
+        }
+
+        .stat-card p {
+            font-size: 30px;
+            font-weight: bold;
+            color: #087f76;
+            margin-top: 10px;
+        }
+
+        .dashboard-panel {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            overflow-x: auto;
+        }
+
+        .dashboard-panel h2 {
+            margin-bottom: 20px;
+            color: #101a2c;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 700px;
+        }
+
+        th, td {
+            padding: 13px;
+            text-align: left;
+            border-bottom: 1px solid #e5eaf0;
+        }
+
+        th {
+            background: #101a2c;
+            color: white;
+        }
+
+        .empty-message {
+            text-align: center;
+            padding: 25px;
+            color: #68778b;
+        }
+
+        .status {
+            color: #a66b00;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <h2>NEXORA GRAND HOTEL</h2>
+    <nav>
+        <a href="index.html">Guest Website</a>
+        <a href="rooms.html">Rooms</a>
+        <a href="admin.html">Admin Login</a>
+    </nav>
+</header>
+
+<main class="dashboard">
+
+    <div class="dashboard-heading">
+        <div>
+            <h1>Admin Dashboard</h1>
+            <p>Hotel management overview</p>
+        </div>
+
+        <a href="admin.html" class="logout-btn">Logout</a>
+    </div>
+
+    <div class="stats-grid">
+
+        <div class="stat-card">
+            <h3>Total Bookings</h3>
+            <p id="totalBookings">0</p>
+        </div>
+
+        <div class="stat-card">
+            <h3>Pending Bookings</h3>
+            <p id="pendingBookings">0</p>
+        </div>
+
+        <div class="stat-card">
+            <h3>Confirmed Bookings</h3>
+            <p id="confirmedBookings">0</p>
+        </div>
+
+        <div class="stat-card">
+            <h3>Room Categories</h3>
+            <p>3</p>
+        </div>
+
+    </div>
+
+    <section class="dashboard-panel">
+
+        <h2>Guest Reservations</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Guest Name</th>
+                    <th>Phone</th>
+                    <th>Room</th>
+                    <th>Guests</th>
+                    <th>Check-in</th>
+                    <th>Check-out</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+
+            <tbody id="bookingTable">
+                <tr>
+                    <td colspan="7" class="empty-message">
+                        No bookings found on this device.
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </section>
+
+</main>
+
+<footer>
+    <p>&copy; 2026 Nexora Grand Hotel. All Rights Reserved.</p>
+</footer>
+
+<script>
+    const bookings = JSON.parse(localStorage.getItem("hotelBookings")) || [];
+
+    document.getElementById("totalBookings").textContent = bookings.length;
+
+    document.getElementById("pendingBookings").textContent =
+        bookings.filter(b => b.status === "Pending").length;
+
+    document.getElementById("confirmedBookings").textContent =
+        bookings.filter(b => b.status === "Confirmed").length;
+
+    const table = document.getElementById("bookingTable");
+
+    if (bookings.length > 0) {
+        table.innerHTML = "";
+
+        bookings.forEach(booking => {
+            const row = document.createElement("tr");
+
+            [
+                booking.name,
+                booking.phone,
+                booking.room,
+                booking.guests,
+                booking.checkin,
+                booking.checkout,
+                booking.status
+            ].forEach(value => {
+                const cell = document.createElement("td");
+                cell.textContent = value || "";
+                row.appendChild(cell);
+            });
+
+            table.appendChild(row);
+        });
+    }
+</script>
+
+</body>
+</html>
